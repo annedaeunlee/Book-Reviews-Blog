@@ -8,5 +8,7 @@ module.exports = app => {
 
     router.post("/", books.create);
 
+    router.delete("/:id", books.delete);
+
     app.use('/books', router);
 };

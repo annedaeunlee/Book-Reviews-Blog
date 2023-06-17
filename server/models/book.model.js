@@ -27,13 +27,32 @@ Book.getAll = result => {
 
 Book.create = (newBook, result) => {
     sql.query("INSERT INTO Book SET ?", newBook, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      result(null, { id: res.insertId, ...newBook });
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        result(null, { id: res.insertId, ...newBook });
     });
-  };
+};
+
+Book.remove = (id, result) => {
+    sql.query("DELETE FROM Book WHERE book_id = ?", id, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+
+        if (res.affectedRows == 0) {
+            // not found Book with the id
+            result({ kind: "not_found" }, null);
+            return;
+        }
+
+        console.log("Deleted book with id: ", id);
+        result(null, res);
+    });
+};
 
 module.exports = Book;
