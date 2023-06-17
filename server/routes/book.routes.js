@@ -6,5 +6,7 @@ module.exports = app => {
     // Retrieve all books
     router.get("/", books.findAll);
 
+    router.post("/", books.create);
+
     app.use('/books', router);
 };
