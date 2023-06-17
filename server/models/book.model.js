@@ -55,4 +55,27 @@ Book.remove = (id, result) => {
     });
 };
 
+Book.updateById = (id, book, result) => {
+    sql.query(
+        "UPDATE Book SET title = ?, author = ?, publication_year = ?, description = ?, genre = ?, cover_image = ? WHERE book_id = ?",
+        [book.title, book.author, book.publication_year, book.description, book.genre, book.cover_image, id],
+        (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+            }
+
+            if (res.affectedRows == 0) {
+                // not found book with the id
+                result({ kind: "not_found" }, null);
+                return;
+            }
+
+            console.log("Updated book: ", { id: id, ...book });
+            result(null, { id: id, ...book });
+        }
+    );
+};
+
 module.exports = Book;

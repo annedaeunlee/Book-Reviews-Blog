@@ -46,16 +46,46 @@ exports.create = (req, res) => {
 // Delete a book with specific id
 exports.delete = (req, res) => {
     Book.remove(req.params.id, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found book with id ${req.params.id}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Could not delete book with id " + req.params.id
-          });
-        }
-      } else res.send({ message: `Book was deleted successfully!` });
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found book with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Could not delete book with id " + req.params.id
+                });
+            }
+        } else res.send({ message: `Book was deleted successfully!` });
     });
-  };
+};
+
+// Update a book specified by id
+exports.update = (req, res) => {
+    // Validate Request
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+    }
+
+    console.log(req.body);
+
+    Book.updateById(
+        req.params.id,
+        new Book(req.body),
+        (err, data) => {
+            if (err) {
+                if (err.kind === "not_found") {
+                    res.status(404).send({
+                        message: `Not found book with id ${req.params.id}.`
+                    });
+                } else {
+                    res.status(500).send({
+                        message: "Error updating book with id " + req.params.id
+                    });
+                }
+            } else res.send(data);
+        }
+    );
+};
