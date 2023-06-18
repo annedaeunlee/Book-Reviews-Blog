@@ -8,8 +8,9 @@ const port = 5000;                  //Save the port number where your server wil
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-app.get('/', (req, res) => { //get requests to the root ("/") will route here
-    res.sendFile('index.html', {root: __dirname}); //server responds by sending the index.html file to the client's browser
+app.get('/', (req, res) => {
+   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+   res.json({ message: "Hello from server!" });
 });
 
 // routes ============================================================================================================
