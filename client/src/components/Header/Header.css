@@ -1,0 +1,5 @@
+.Header {
+  height: 360px; /* maybe change this */
+  display: flex;
+  background-color: #f7e9da;
+}

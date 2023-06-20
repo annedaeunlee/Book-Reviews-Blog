@@ -1,0 +1,61 @@
+.Navigation {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.NavigationInner {
+  padding-top: 10px;
+  padding-bottom: 6px;
+  display: flex;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  position: static;
+}
+
+.Menu {
+  margin-left: auto;
+  display: flex;
+}
+
+.Logo {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  /* padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px; */
+  font-family: "Akshar";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 1px;
+
+  color: #074f65;
+}
+
+.TheBooks {
+  padding: 20px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: "16023 futuran", sans-serif;
+  color: #c09f7c;
+}
+
+.About {
+  padding: 20px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: "16023 futuran", sans-serif;
+  color: #6c8396;
+}

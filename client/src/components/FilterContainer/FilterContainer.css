@@ -1,0 +1,19 @@
+.FilterContainer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.FilterText {
+  font-family: "16023 futuran", sans-serif;
+  color: #6c8396;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
