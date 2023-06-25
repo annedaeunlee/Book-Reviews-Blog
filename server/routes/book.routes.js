@@ -1,15 +1,15 @@
-module.exports = app => {
-    const books = require("../controllers/book.controller.js");
+module.exports = (app) => {
+  const books = require("../controllers/book.controller.js");
 
-    var router = require("express").Router();
+  var router = require("express").Router();
 
-    router.get("/", books.findAll);
+  router.get("/", books.findAll);
 
-    router.post("/", books.create);
+  router.post("/", books.create);
 
-    router.delete("/:id", books.delete);
+  router.delete("/:id", books.delete);
 
-    router.put("/:id", books.update);
+  router.put("/:id", books.update);
 
-    app.use('/books', router);
+  app.use("/books", router);
 };

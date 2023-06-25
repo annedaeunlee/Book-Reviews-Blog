@@ -1,11 +1,11 @@
 import React from "react";
 import "./ItemName.css";
 
-function ItemName() {
+function ItemName(props) {
   return (
     <div>
-      <div className="ItemTitle">A LITTLE LIFE</div>
-      <div className="ItemAuthor">HANYA YANAGIHARA</div>
+      <div className="ItemTitle">{props.title}</div>
+      <div className="ItemAuthor">{props.author}</div>
     </div>
   );
 }
