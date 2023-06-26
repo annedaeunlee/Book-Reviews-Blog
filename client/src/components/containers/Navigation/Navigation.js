@@ -1,8 +1,14 @@
 import React from "react";
 import "./Navigation.css";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
+  const navigate = useNavigate();
+  const onClick = () => {
+    console.log("Click!");
+    navigate("/");
+  };
   return (
     <div className="Navigation">
       <Helmet>
@@ -12,7 +18,9 @@ function Navigation() {
         />
       </Helmet>
       <div className="NavigationInner">
-        <div className="Logo">MIN'DS A MESS BY ANNE</div>
+        <div className="Logo" onClick={onClick}>
+          MIN'DS A MESS BY ANNE
+        </div>
         <div className="Menu">
           <a className="TheBooks">THE BOOKS</a>
           <a className="About">ABOUT</a>

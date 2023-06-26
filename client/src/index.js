@@ -1,13 +1,52 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import BookPage from "./components/pages/BookPage/BookPage";
+import HomePage from "./components/pages/HomePage/HomePage";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route
+        path="/"
+        loader={async ({ request }) => {
+          const res = await fetch("http://localhost:5000/books/", {
+            signal: request.signal,
+          });
+          const books = await res.json();
+          console.log(books);
+          return books;
+        }}
+        element={<HomePage />}
+      />
+      <Route
+        path="/:bookId"
+        loader={async ({ params }) => {
+          const res = await fetch(
+            `http://localhost:5000/books/${params.bookId}`
+          );
+          const book = await res.json();
+          console.log(book);
+          return book;
+        }}
+        element={<BookPage />}
+      />
+    </>
+  )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
